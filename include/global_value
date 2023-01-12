@@ -1,0 +1,9 @@
+#pragma once
+
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+
+static bool shutdown = false;
