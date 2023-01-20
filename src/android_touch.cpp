@@ -1,12 +1,11 @@
-#include <android_touch.hpp>
+#include "android_touch.hpp"
 
 void Android_Touch(ImGuiIO& io)
 {
 	struct input_event touch_event;
 	char* touchDevice = new char [NAME_SIZE];
 	int fd = -1;
-	int abs_x[3] = {0}, abs_y[3] = {0};
-	int x, y, z;
+	float x, y, z;
 
 	if (getTouchScreenDevice(touchDevice) != 0)
 		perror("Error");
@@ -29,10 +28,23 @@ void Android_Touch(ImGuiIO& io)
 					continue;
 				case ABS_MT_TRACKING_ID:
 					z = touch_event.value;
-					continue;
+				default:
+					break;
 			}
 			z < 0 ? io.MouseDown[0] = false : io.MouseDown[0] = true;
-			io.MousePos = ImVec2(x, y);
+			switch (orientation)
+			{
+				case 0:
+					io.MousePos = ImVec2(x, y);
+					continue;
+				case 1:
+					io.MousePos = ImVec2(y , height - x);
+					continue;
+				case 3:
+					io.MousePos = ImVec2(width - y, x);
+				default:
+					break;
+			}
 		}
 	}
 

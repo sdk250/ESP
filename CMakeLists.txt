@@ -2,35 +2,25 @@ cmake_minimum_required(VERSION 3.25)
 
 project(draw)
 
-# set(
-	# CMAKE_C_COMPILER /data/data/com.termux/files/home/android-ndk-r24/toolchains/llvm/prebuilt/linux-aarch64/bin/clang
-# )
-# set(
-	# CMAKE_CXX_COMPILER /data/data/com.termux/files/home/android-ndk-r24/toolchains/llvm/prebuilt/linux-aarch64/bin/clang++
-# )
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 add_compile_options(
 	--target=aarch64-linux-android
+	-m64
 	-fPIC
 	-fPIE
 	-ferror-limit=5
+	-Wall
+	-Werror
+	-Wno-bitwise-op-parentheses
 	-O3
 )
 
-# link_directories(
-	# /data/data/com.termux/files/home/NDK/lib/aarch64-linux-android
-	# /data/data/com.termux/files/home/NDK/lib/aarch64-linux-android/31
-	# # /system/lib64
-# )
-
 include_directories(
-	# /data/data/com.termux/files/home/NDK/include
-	# /data/data/com.termux/files/home/NDK/include/aarch64-linux-android
-	# /data/data/com.termux/files/home/NDK/include/c++/v1
 	include/frameworks/native/opengl/include
-	include/frameworks/native/include
+	include/frameworks/native/libs/gui/include
+	include/frameworks/native/libs/ui/include
 	include/frameworks/native/libs/nativewindow/include
 	include/frameworks/native/libs/nativebase/include
 	include/frameworks/native/libs/binder/include

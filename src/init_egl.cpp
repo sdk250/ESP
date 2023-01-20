@@ -1,4 +1,4 @@
-#include <init_egl.hpp>
+#include "init_egl.hpp"
 
 InitEGL::InitEGL(void)
 {
@@ -67,7 +67,6 @@ InitEGL::InitEGL(void)
 
 InitEGL::~InitEGL(void)
 {
-	puts("Start destroy memory of EGL....");
 	if (EGL_display != EGL_NO_DISPLAY)
 	{
 		eglMakeCurrent(EGL_display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);

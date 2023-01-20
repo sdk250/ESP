@@ -1,9 +1,33 @@
 #pragma once
 
+#ifndef __GLOBAL_VALUE_H__
+#define __GLOBAL_VALUE_H__
+
+// headers file
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#if (defined __DRAW_H__) || (defined __INIT_EGL_H__)
 #include <cstring>
+#endif
+#ifdef __DRAW_H__
 #include <string>
+#endif
+#if (defined __ANDROID_TOUCH_H__) || (defined __DRAW_H__)
+#include <unistd.h>
+#endif
+#if (defined __DRAW_H__) || (defined __ANDROID_TOUCH_H__)
+#include <thread>
+#endif
+#if (defined __DRAW_H__) || (defined __INIT_EGL_H__)
+#include <android/native_window.h>
+#endif
 
-static bool shutdown = false;
+extern std::string exec(const std::string&);
+
+extern bool shutdown;
+extern uint32_t width;
+extern uint32_t height;
+extern unsigned short int orientation;
+
+#endif

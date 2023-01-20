@@ -1,9 +1,12 @@
 #pragma once
 
-#include <EGL/egl.h>
-#include <android/native_window.h>
+#ifndef __INIT_EGL_H__
+#define __INIT_EGL_H__
 
-#include <global_value>
+// system headers file
+#include <EGL/egl.h>
+// user headers file
+#include "global_value"
 
 #define ATTRIB_SIZE 19
 
@@ -27,3 +30,5 @@ class InitEGL
 		inline EGLDisplay get_egl_display(void) const {return EGL_display;};
 		EGLSurface get_egl_surface(ANativeWindow *);
 };
+
+#endif
