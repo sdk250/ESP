@@ -15,4 +15,4 @@ $> cmake && make
 仅在Android 12上面测试过，因为我没有其他机器。<br>
 
 # Thanks
-感谢 [Android_Native_Surfave](https://github.com/SsageParuders/Android_Native_Surface) 给我的ImGui在安卓上驱动的启发<br>
+感谢 [Android_Native_Surface](https://github.com/SsageParuders/Android_Native_Surface) 给我的ImGui在安卓上驱动的启发<br>
